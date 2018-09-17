@@ -1,0 +1,249 @@
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <!-- <div class="panel-heading">
+    <! <div class="row">
+      <div class="col-md-6">
+        <strong>CREATE DO</strong>
+      </div>
+    </div> 
+  </div>  -->
+    <div class="panel-body">
+      <form>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="bspDoNo" class="test">BSP DO No.</label>
+              <input type="number" class="form-control" id="bspDoNo" required>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="areaDoNo">Area DO No.</label>
+              <input type="text" class="form-control" id="areaDoNo" required>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="doNo">DO No. (Auction No)</label>
+              <input type="text" class="form-control" id="doNo" required>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="quantity">Quantity</label>
+              <input type="number" class="form-control" id="quantity" required>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="doDate">DO Date</label>
+              <input type="date" class="form-control" id="doDate" required>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="receivedDate">Received Date</label>
+              <input type="date" class="form-control" id="receivedDate" required>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="dueDate">Due Date</label>
+              <input type="date" class="form-control" id="dueDate" required disabled>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="size">Size</label>
+              <select class="form-control" name="size" id="size" required>
+              <option *ngFor="let size of sizes" [value]="size">{{size}}</option>
+            </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="partyName">Party Name</label>
+              <select class="form-control" name="partyName" id="partyName" required>
+              <option *ngFor="let size of sizes" [value]="size">partyName</option>
+            </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="area">Area</label>
+              <select class="form-control" name="area" id="area" required>
+              <option *ngFor="let size of sizes" [value]="size">Area</option>
+            </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="collary">Collary</label>
+              <select class="form-control" name="collary" id="collary" required>
+              <option *ngFor="let size of sizes" [value]="size">Collary</option>
+            </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="grade">Grade</label>
+              <select class="form-control" name="grade" id="grade">
+              <option *ngFor="let size of sizes" [value]="size">Grade</option>
+            </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="destinationParty">Destination Party</label>
+              <select class="form-control" name="by" id="destinationParty">
+              <option *ngFor="let size of sizes" [value]="size">Destination Party</option>
+            </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="destination">Destination</label>
+              <select class="form-control" name="by" id="destination">
+              <option *ngFor="let size of sizes" [value]="size">Destination</option>
+            </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="freight">Freight</label>
+              <select class="form-control" name="freight" id="freight">
+              <option *ngFor="let size of sizes" [value]="size">Freight</option>
+            </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="permissionNo">Permission No</label>
+              <input type="number" class="form-control" id="permissionNo">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="by">By</label>
+              <select class="form-control" name="by" id="by">
+              <option *ngFor="let size of sizes" [value]="size">By</option>
+            </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="emd">EMD</label>
+              <input type="text" class="form-control" id="emd">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="doAmt">DO Amt</label>
+              <input type="text" class="form-control" id="doAmt">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="doAmtPMt">DO Amt P. MT</label>
+              <input type="text" class="form-control" id="doAmtPMt">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="doRate">DO Rate</label>
+              <input type="text" class="form-control" id="doRate">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="doRateTcs">DO Rate + TCS</label>
+              <input type="text" class="form-control" id="doRateTcs">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="withinOutSide">Within/out Side</label>
+              <select class="form-control" name="by" id="withinOutSide">
+              <option *ngFor="let size of sizes" [value]="size">Within/out Side</option>
+            </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="disp">Disp</label>
+              <input type="text" class="form-control" id="disp">
+            </div>
+          </div>
+          <!-- Only when edit DO  - START-->
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="liftedQuantity">Lifted Quantity</label>
+              <input type="number" class="form-control" id="liftedQuantity">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="quantityDeduction">Quantity Deduction</label>
+              <input type="number" class="form-control" id="quantityDeduction">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="lepseQuantity">Lepse Quantity</label>
+              <input type="number" class="form-control" id="lepseQuantity">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="remarks">Remarks</label>
+              <input type="text" class="form-control" id="remarks">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="refundAmt">Refund Amt</label>
+              <input type="text" class="form-control" id="refundAmt">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="refundDate">Refund Date</label>
+              <input type="date" class="form-control" id="refundDate">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="emdAmt">EMD Amt</label>
+              <input type="text" class="form-control" id="emdAmt">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="totalRefundEmd">Total Refund Amt</label>
+              <input type="text" class="form-control" id="totalRefundEmd">
+            </div>
+          </div>
+          <!-- Only when edit DO  - END-->
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="transporter">Transporter</label>
+              <select class="form-control" name="transporter" id="transporter">
+              <option *ngFor="let size of sizes" [value]="size">Transporter</option>
+            </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="website">Website</label>
+              <input type="text" class="form-control" id="website">
+            </div>
+          </div>
+        </div>
+
+        <!-- <button type="submit" class="btn btn-success">Create</button> -->
+        <button type="submit" class="btn btn-primary">Create</button>
+
+      </form>
+    </div>
+  </div>
+</div>
