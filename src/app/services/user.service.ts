@@ -10,4 +10,16 @@ export class UserService {
     constructor(public http: Http) {
         
     }
+
+    registerUser(data){
+
+    }
+
+    getAllUser(){
+
+    }
+
+    modifyUser(data){
+
+    }
 }

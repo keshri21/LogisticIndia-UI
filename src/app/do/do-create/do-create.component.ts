@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
+import { DoService } from '../../services/do.service'
+import { ToastrService } from 'ngx-toastr';
 
 import { DODetails } from '../../model/do-details.model'
 @Component({
@@ -10,66 +12,96 @@ import { DODetails } from '../../model/do-details.model'
 export class DoCreateComponent implements OnInit {
   sizes: [string];
   doDetails: DODetails;
-  constructor() { }
+  submitted: boolean;
+
+  constructor(private doFormBuilder: FormBuilder, private doService: DoService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.doDetails = new DODetails(),
       this.sizes = ["Small", "Big", "medium"]
   }
 
-  doCreateForm = new FormGroup({
-    bspDoNo: new FormControl(''),
-    areaDoNo: new FormControl(''),
-    auctionNo: new FormControl(''),
-    quantity: new FormControl(''),
-    doDate: new FormControl(''),
-    receivedDate: new FormControl(''),
-    dueDate: new FormControl(''),
-    size: new FormControl(''),
-    party: new FormGroup({
-      id: new FormControl(''),
-      name: new FormControl(''),
-      destinations: new FormControl(''),
-      freightRanges: new FormControl(''),
+  doCreateForm = this.doFormBuilder.group({
+    bspDoNo: [''],
+    areaDoNo: ['', Validators.required],
+    auctionNo: [''],
+    quantity: [''],
+    doDate: [''],
+    receivedDate: [''],
+    dueDate: [''],
+    size: [''],
+    // party: new FormGroup({
+    //   id: [''],
+    //   name: [''],
+    //   destinations: [''],
+    //   freightRanges: [''],
 
-    }),
-    destinations: new FormControl(''),
-    destinationParty: new FormGroup({
-      id: new FormControl(''),
-      name: new FormControl(''),
-      destinations: new FormControl(''),
-      freightRanges: new FormControl('')
-    }),
-    freight: new FormGroup({
-      min: new FormControl(''),
-      max: new FormControl('')
-    }),
-    permissionNo: new FormControl(''),
-    area: new FormControl(''),
-    collary: new FormControl(''),
-    grade: new FormControl(''),
-    by: new FormControl(''),
-    builtyCompany: new FormControl(''),
-    transporter: new FormControl(''),
-    emd: new FormControl(''),
-    doAmt: new FormControl(''),
-    doAmtpmt: new FormControl(''),
-    doRate: new FormControl(''),
-    doRateTcs: new FormControl(''),
-    withinOutSide: new FormControl(''),
-    disp: new FormControl(''),
-    liftedQuantity: new FormControl(''),
-    quantityDeduction: new FormControl(''),
-    lepseQuantity: new FormControl(''),
-    doStatus: new FormControl(''),
-    refundAmt: new FormControl(''),
-    refundDate: new FormControl(''),
-    emdAmt: new FormControl(''),
-    totalRefundAmt: new FormControl(''),
-    website: new FormControl(''),
-    finishDate: new FormControl(''),
-    remarks: new FormControl(''),
-    inAdvanceLimit: new FormControl(''),
-    freightToBePaidBy: new FormControl('')
+    // }),
+    party: [''],
+    destinations: [''],
+    // destinationParty: new FormGroup({
+    //   id: [''],
+    //   name: [''],
+    //   destinations: [''],
+    //   freightRanges: ['']
+    // }),
+    destinationParty: [''],
+    // freight: new FormGroup({
+    //   min: [''],
+    //   max: ['']
+    // }),
+    freight: [''],
+    permissionNo: [''],
+    area: [''],
+    collary: [''],
+    grade: [''],
+    by: [''],
+    builtyCompany: [''],
+    transporter: [''],
+    emd: [''],
+    doAmt: [''],
+    doAmtpmt: [''],
+    doRate: [''],
+    doRateTcs: [''],
+    withinOutSide: [''],
+    disp: [''],
+    liftedQuantity: [''],
+    quantityDeduction: [''],
+    lepseQuantity: [''],
+    doStatus: [''],
+    refundAmt: [''],
+    refundDate: [''],
+    emdAmt: [''],
+    totalRefundAmt: [''],
+    website: [''],
+    finishDate: [''],
+    remarks: [''],
+    inAdvanceLimit: [''],
+    freightToBePaidBy: ['']
   })
+
+
+  onSubmitDo() {
+    this.submitted = true;
+
+    if (this.doCreateForm.invalid) {
+      this.toastr.error("Form is invalid");
+      return;
+    }
+
+    this.createDo(this.doCreateForm.value)
+  }
+
+  createDo(doData) {
+    this.doService.createDoService(doData).subscribe(
+      (data) => {
+
+      },
+      (err) => {
+
+      }
+    )
+  }
+
+  get f() { return this.doCreateForm.controls; }
 }

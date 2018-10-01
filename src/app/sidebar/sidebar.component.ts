@@ -19,7 +19,7 @@ export const ROUTES: RouteInfo[] = [];
 
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
-    public currentProfileIdentifier: String = "office";
+    public currentProfileIdentifier: String = "master";
 
     ngOnInit() {
         this.menuItems = this.getcurrentProfileForRoutes(this.setRoutesForMenu.bind(this))

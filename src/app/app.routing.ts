@@ -21,100 +21,135 @@ import { DailyReportOwnerComponent } from './reporting/daily-report-owner/daily-
 import { DoRunningListComponent } from './do/do-running/do-running-list/do-running-list.component';
 import { RaiseBillComponent } from './billing/raise-bill/raise-bill.component';
 import { FieldEntryApproveComponent } from './reporting/field-entry-approve/field-entry-approve.component';
-import { UserComponent} from './user/user.component'
+import { UserComponent } from './user/user.component'
+import { LoginComponent } from './authorization/login/login.component'
+import { AuthGuard } from './authorization/auth.guards'
+import { ErrorPageComponent } from './error/error.page.component'
 
 export const AppRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'createdo',
+        redirectTo: 'login',
         pathMatch: 'full',
+
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
+    },
+    {
+        path: 'error',
+        component: ErrorPageComponent
     },
     {
         path: "runningdo",
-        component: DoRunningComponent
+        component: DoRunningComponent,
+        canActivate: [AuthGuard]
+
     },
     {
         path: "completedo",
-        component: DoCompletedComponent
+        component: DoCompletedComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "createdo",
-        component: DoCreateComponent
+        component: DoCreateComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "register_truck",
-        component: RegistrationTruckComponent
+        component: RegistrationTruckComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "search_truck",
-        component: TruckSearchResultsComponent
+        component: TruckSearchResultsComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "truckupdate",
-        component: TruckUpdateDetailsComponent
+        component: TruckUpdateDetailsComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "builtyreceipt",
-        component: BuiltyReceiptComponent
+        component: BuiltyReceiptComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "builtycreate",
-        component: BuiltyCreateComponent
+        component: BuiltyCreateComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "builtyapprove",
-        component: BuiltyApproveComponent
+        component: BuiltyApproveComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "billgenerate",
-        component: BillGenerateComponent
+        component: BillGenerateComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "truckownerreport",
-        component: TruckOwnerReportComponent
+        component: TruckOwnerReportComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "fieldreport",
-        component: FieldReportSelfComponent
+        component: FieldReportSelfComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "dispatchreport",
-        component: DispatchReportCustomerComponent
+        component: DispatchReportCustomerComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "cashbalance",
-        component: FieldCashBalanceComponent
+        component: FieldCashBalanceComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "truckownerdetails",
-        component: TruckOwnerDetailsComponent
+        component: TruckOwnerDetailsComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "freightreport",
-        component: FreightReportTruckownerComponent
+        component: FreightReportTruckownerComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "reportpassive",
-        component: DailyReportPassiveComponent
+        component: DailyReportPassiveComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "reportowner",
-        component: DailyReportOwnerComponent
+        component: DailyReportOwnerComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "runningdolist",
-        component: DoRunningListComponent
+        component: DoRunningListComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: "raisebill",
-        component: RaiseBillComponent
+        component: RaiseBillComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'fieldentry',
-        component: FieldEntryApproveComponent
+        component: FieldEntryApproveComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'adduser',
-        component: UserComponent
+        component: UserComponent,
+        canActivate: [AuthGuard]
     }
 ]

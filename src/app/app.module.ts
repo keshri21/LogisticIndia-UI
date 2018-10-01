@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
@@ -11,6 +16,7 @@ import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { FixedPluginModule } from './shared/fixedplugin/fixedplugin.module';
 import { NguiMapModule } from '@ngui/map';
+import { ToastrModule } from 'ngx-toastr';
 
 import { NotificationsComponent } from './notifications/notifications.component';
 
@@ -37,6 +43,9 @@ import { BuiltyReceiptUpdateComponent } from './builty/builty-receipt/builty-rec
 import { DoRunningListComponent } from './do/do-running/do-running-list/do-running-list.component';
 import { FieldEntryApproveComponent } from './reporting/field-entry-approve/field-entry-approve.component'
 import { UserComponent } from './user/user.component'
+import { UserListComponent } from './user/user-list/user-list.component'
+import { LoginComponent } from './authorization/login/login.component'
+import { AuthGuard } from './authorization/auth.guards'
 
 import { TruckPanService } from './services/truck.pan.services'
 import { BuiltyService } from './services/builty.service'
@@ -44,6 +53,9 @@ import { BillingService } from './services/billing.service'
 import { DoService } from './services/do.service'
 import { UserService } from './services/user.service'
 import { ReportService } from './services/report.service'
+import { LoginService } from './services/login.service'
+import { ErrorPageComponent } from './error/error.page.component'
+
 
 
 @NgModule({
@@ -73,18 +85,39 @@ import { ReportService } from './services/report.service'
     BuiltyReceiptUpdateComponent,
     DoRunningListComponent,
     FieldEntryApproveComponent,
-    UserComponent
+    UserComponent,
+    UserListComponent,
+    LoginComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
-   // ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(AppRoutes),
     SidebarModule,
     NavbarModule,
     FooterModule,
     FixedPluginModule,
-    NguiMapModule.forRoot({ apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE' })
+    NguiMapModule.forRoot({ apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE' }),
 
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      progressBar: true,
+      closeButton: true,
+      iconClasses: {
+        error: 'toast-error',
+        info: 'toast-info',
+        success: 'toast-success',
+        warning: 'toast-warning',
+      }
+    }), // ToastrModule added
+    
   ],
   providers: [
     TruckPanService,
@@ -92,6 +125,8 @@ import { ReportService } from './services/report.service'
     BillingService,
     DoService,
     UserService,
+    LoginService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

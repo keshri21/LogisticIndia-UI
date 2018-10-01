@@ -19,6 +19,7 @@ export class DoRunningListComponent implements OnInit {
 
     ngOnInit() {
     }
+    
     isrunningDoTablevisible: boolean = false;
 
     @Input() activeDoProperties: any

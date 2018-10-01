@@ -11,10 +11,8 @@ export interface FieldReport  {
 })
 export class FieldReportSelfComponent implements OnInit {
 
-  constructor() { }
-
   reportProperties;
-  reports
+  constructor() { }
 
   ngOnInit() {
   }

@@ -1,46 +1,29 @@
-<div class="row">
-  <div class="col-xs-4 col-md-6 col-md-push-6">
-    <div class="">
-      <input id="selectAll-check" class="icon-checkbox" type="checkbox" />
-      <label for="selectAll-check" >
-              <span class='glyphicon glyphicon-unchecked unchecked'></span>
-              <span class='glyphicon glyphicon-check checked'></span>
-              Select All DO
-            </label>
-    </div>
-    <div *ngFor="let activeDO of activeDoList">
-      <input id="{{activeDO.doId}}-check" [checked]="selectAll"  type="checkbox" />
-      <label for="{{activeDO.doId}}-check" (click)="activeDO.selected = !activeDO.selected" class="container">
-               {{activeDO.doId}}
-            </label>
-    </div>
-    <div>
-      <button type="button" name="Proceed"  class="btn btn-primary">Proceed</button>
+<div class="container-fluid">
+  
+  <div class="row" >
+    <div class="col-xs-2 col-md-push-5 scrollbar">
+      <div class="">
+        <label class="checkboxcontainer">Select All
+          <input type="checkbox" checked="checked" [(ngModel)]="selectedAll" (change)="selectAllCheckbox($event)">
+          <span class="checkmark"></span>
+      </label>
+      </div>
+      <div *ngFor="let activeDO of activeDoList">
+        <label for="{{activeDO.doId}}-check" class="checkboxcontainer">DO ID -> {{activeDO.doId}}
+          <input id="{{activeDO.doId}}-check" type="checkbox" (change) = "updatecheckBoxList(activeDO, $event)" [(ngModel)] ="activeDO.selected">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <div>
+      </div>
     </div>
   </div>
+   <button type="button" name="Show" class="btn btn-primary" (click)="showAllRunningDo()">Show</button>
 </div>
-<!-- <h1>Custom Checkboxes</h1>
-<label class="container">One
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-</label>
-<label class="container">Two
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label>
-<label class="container">Three
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label>
-<label class="container">Four
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label> -->
 <br>
-
 <div *ngIf="isrunningDoTablevisible; then showTable">
 </div>
 
 <ng-template #showTable>
-  <app-do-running-list [activeDoProperties] = activeDoProperties [activeDoList] = activeDoList  ></app-do-running-list>
+  <app-do-running-list [activeDoProperties] = activeDoProperties [activeDoList] = runningDosInTable></app-do-running-list>
 </ng-template>

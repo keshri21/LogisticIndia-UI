@@ -2,43 +2,46 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs/Subject'
+import { HttpHeaders } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 
 @Injectable()
 export class BuiltyService {
+    url: string = "localhost"
 
-    constructor(public http: Http) {
-        
-    }
-
-    createBuiltyService(){
+    constructor(public http: HttpClient) {
 
     }
 
-    getActiveBuiltiesService(){
-
-    }
-    
-    getAllbuiltiesService(){
+    createBuiltyService() {
 
     }
 
-    getCompletedBuiltiesService(){
+    getActiveBuiltiesService() {
+        return this.http.get(this.url + '/do/active');
+    }
+
+    getAllbuiltiesService() {
 
     }
 
-    getBuiltybyIDService(){
+    getCompletedBuiltiesService() {
 
     }
 
-    approveBuiltyService(){
+    getBuiltybyIDService() {
 
     }
 
-    builtyReceiptService(){
+    approveBuiltyService() {
 
     }
 
-    updateBuiltyService(){
-        
+    builtyReceiptService() {
+
+    }
+
+    updateBuiltyService() {
+
     }
 }

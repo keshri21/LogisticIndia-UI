@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core' ;
-import { DO } from '../../model/do.model' ;
-import { Builty } from '../../model/builty.model' ;
+import { Component, OnInit } from '@angular/core';
+import { DO } from '../../model/do.model';
+import { Builty } from '../../model/builty.model';
 
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms'
 
 @Component({
   selector: 'app-builty-create',
@@ -10,9 +10,9 @@ import { FormGroup, FormControl } from '@angular/forms'
   styleUrls: ['./builty-create.component.css']
 })
 export class BuiltyCreateComponent implements OnInit {
-  doList
+  doList = []
 
-  constructor() { }
+  constructor(public builtyFormBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.doList.push(new DO(133, 'bilaspur', 1200, 2345, 4563));
@@ -20,66 +20,71 @@ export class BuiltyCreateComponent implements OnInit {
     this.doList.push(new DO(131, 'bijuri', 1100, 2345, 4563));
   }
 
-  builtyForm = new FormGroup({
+  builtyForm = this.builtyFormBuilder.group({
 
-    builtyNo: new FormControl(''),
-    doId: new FormControl(''),
-    doDisplay: new FormControl(''),
-    party: new FormGroup({
-      id: new FormControl(''),
-      name: new FormControl(''),
-      destinations: new FormControl(''),
-      freightRanges: new FormControl(''),
+    builtyNo: [''],
+    doId: [''],
+    doDisplay: [''],
+    // party: new FormGroup({
+    //   id: [''],
+    //   name: [''],
+    //   destinations: [''],
+    //   freightRanges: [''],
 
-    }),
-    builtynew: new FormControl(''),
-    otBuiltyCompany: new FormControl(''),
-    otBuiltyNumber: new FormControl(''),
-    vehicleNo: new FormControl(''),
-    quantity: new FormControl(''),
-    inAdvance: new FormControl(''),
-    outAdvance: new FormControl(''),
-    diesel: new FormControl(''),
-    pumpName: new FormControl(''),
-    freight: new FormControl(''),
-    totalAdvance: new FormControl(''),
-    permitNo: new FormControl(''),
-    permitBalance: new FormControl(''),
-    permitEndnew: new FormControl(''),
-    igpNo: new FormControl(''),
-    invoiceNo: new FormControl(''),
-    invoiceValue: new FormControl(''),
-    driverName: new FormControl(''),
-    driverMobile: new FormControl(''),
-    grossWeight: new FormControl(''),
-    tierWeight: new FormControl(''),
-    doBalance: new FormControl(''),
-    transporter: new FormGroup({
-      userName: new FormControl(''),
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      password: new FormControl(''),
-      role: new FormControl(''),
-      active: new FormControl('')
-    }),
-    subTransporter: new FormGroup({
-      userName: new FormControl(''),
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      password: new FormControl(''),
-      role: new FormControl(''),
-      active: new FormControl('')
-    }),
-    waybillNo: new FormControl(''),
-    tpNo: new FormControl(''),
-    receivednew: new FormControl(''),
-    receivedQuantity: new FormControl(''),
-    netWeight: new FormControl(''),
-    refund: new FormControl(''),
-    assesibleValue: new FormControl(''),
-    freightToBePaidBy: new FormControl(''),
-    inAdvanceLimit: new FormControl('')
+    // }),
+    builtyDate: [''],
+    otBuiltyCompany: [''],
+    otBuiltyNumber: [''],
+    vehicleNo: [''],
+    quantity: [''],
+    inAdvance: [''],
+    outAdvance: [''],
+    diesel: [''],
+    pumpName: [''],
+    freight: [''],
+    totalAdvance: [''],
+    permitNo: [''],
+    permitBalance: [''],
+    permitEndDate: [''],
+    igpNo: [''],
+    invoiceNo: [''],
+    invoiceValue: [''],
+    driverName: [''],
+    driverMobile: [''],
+    grossWeight: [''],
+    tierWeight: [''],
+    doBalance: [''],
+    // transporter: new FormGroup({
+    //   userName: [''],
+    //   firstName: [''],
+    //   lastName: [''],
+    //   password: [''],
+    //   role: [''],
+    //   active: ['']
+    // }),
+    // subTransporter: new FormGroup({
+    //   userName: [''],
+    //   firstName: [''],
+    //   lastName: [''],
+    //   password: [''],
+    //   role: [''],
+    //   active: ['']
+    // }),
+    transporter: [''],
+    subTransporter : [''],
+    waybillNo: [''],
+    tpNo: [''],
+    receivedDate: [''],
+    receivedQuantity: [''],
+    netWeight: [''],
+    refund: [''],
+    assesibleValue: [''],
+    freightToBePaidBy: [''],
+    inAdvanceLimit: ['']
 
   })
 
+  onSubmitbuilty() {
+
+  }
 }

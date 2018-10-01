@@ -1,38 +1,43 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Subject } from 'rxjs/Subject'
-
-
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable'
+import { HttpHeaders } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 
 @Injectable()
 export class DoService {
     url: string = "localhost"
-    constructor(public http: Http) {
+    constructor(public http: HttpClient) {
 
     }
 
-    createDoService(data) {
-        return this.http.post(this.url, data).map(res => res.json())
+    createDoService(data): Observable<any> {
+        return this.http.post(this.url + '/do', data).map(res => res);
     }
 
-    getActiveDosService() {
-        return this.http.get(this.url +'/:id')
+    getActiveDosService(): Observable<any> {
+        return this.http.get(this.url + '/do/active', {
+            headers: new HttpHeaders({
+                'content-type': 'application/json',
+                'token': localStorage.getItem('token')
+            })
+        }).map(res => res);
     }
 
-    getAllDosService() {
-
+    getAllDosService(): Observable<any> {
+        return this.http.get(this.url + '/do').map(res => res);
     }
 
-    getCompletedDosService() {
-
+    getCompletedDosService(): Observable<any> {
+        return this.http.get(this.url + '/do/completed').map(res => res);
     }
 
-    getDoByIDService() {
-
+    getDoByIDService(id): Observable<any> {
+        return this.http.get(this.url + '${id}').map(res => res);
     }
 
-    updateDoService() {
-
+    updateDoService(data): Observable<any> {
+        return this.http.put(this.url + '${id}', data).map(res => res);
     }
 }

@@ -8,241 +8,274 @@
     </div> 
   </div>  -->
     <div class="panel-body">
-      <form>
+      <form [formGroup]="doCreateForm" (ngSubmit)="onSubmitDo()">
         <div class="row">
           <div class="col-md-3">
             <div class="form-group">
               <label for="bspDoNo" class="test">BSP DO No.</label>
-              <input type="number" class="form-control" id="bspDoNo" required>
+              <input type="number" class="form-control" id="bspDoNo" formControlName="bspDoNo">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="areaDoNo">Area DO No.</label>
-              <input type="text" class="form-control" id="areaDoNo" required>
+              <input type="text" class="form-control" id="areaDoNo" formControlName="areaDoNo">
+              <!-- <div *ngIf="submitted && f.areaDoNo.errors" class="invalid-feedback">
+                <div *ngIf="submitted && f.areaDoNo.errors.required">First Name is required</div>
+              </div> -->
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="doNo">DO No. (Auction No)</label>
-              <input type="text" class="form-control" id="doNo" required>
+              <input type="text" class="form-control" id="doNo" formControlName="auctionNo">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="quantity">Quantity</label>
-              <input type="number" class="form-control" id="quantity" required>
+              <input type="number" class="form-control" id="quantity" formControlName="quantity">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="doDate">DO Date</label>
-              <input type="date" class="form-control" id="doDate" required>
+              <input type="date" class="form-control" id="doDate" formControlName="doDate">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="receivedDate">Received Date</label>
-              <input type="date" class="form-control" id="receivedDate" required>
+              <input type="date" class="form-control" id="receivedDate" formControlName="receivedDate">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="dueDate">Due Date</label>
-              <input type="date" class="form-control" id="dueDate" required disabled>
+              <input type="date" class="form-control" id="dueDate" formControlName="dueDate" disabled>
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="size">Size</label>
-              <select class="form-control" name="size" id="size" required>
-              <option *ngFor="let size of sizes" [value]="size">{{size}}</option>
-            </select>
+              <select class="form-control" name="size" id="size" formControlName="size">
+                <option *ngFor="let size of sizes" [value]="size">{{size}}</option>
+              </select>
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="partyName">Party Name</label>
-              <select class="form-control" name="partyName" id="partyName" required>
-              <option *ngFor="let size of sizes" [value]="size">partyName</option>
-            </select>
+              <select class="form-control" name="partyName" id="partyName" formControlName="party">
+                <option *ngFor="let size of sizes" [value]="size">partyName</option>
+              </select>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="area">Area</label>
-              <select class="form-control" name="area" id="area" required>
-              <option *ngFor="let size of sizes" [value]="size">Area</option>
-            </select>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="collary">Collary</label>
-              <select class="form-control" name="collary" id="collary" required>
-              <option *ngFor="let size of sizes" [value]="size">Collary</option>
-            </select>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="grade">Grade</label>
-              <select class="form-control" name="grade" id="grade">
-              <option *ngFor="let size of sizes" [value]="size">Grade</option>
-            </select>
-            </div>
-          </div>
+
           <div class="col-md-3">
             <div class="form-group">
               <label for="destinationParty">Destination Party</label>
-              <select class="form-control" name="by" id="destinationParty">
-              <option *ngFor="let size of sizes" [value]="size">Destination Party</option>
-            </select>
+              <select class="form-control" name="destinationParty" id="destinationParty" formControlName="destinationParty">
+                <option *ngFor="let size of sizes" [value]="size">Destination Party</option>
+              </select>
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="destination">Destination</label>
-              <select class="form-control" name="by" id="destination">
-              <option *ngFor="let size of sizes" [value]="size">Destination</option>
-            </select>
+              <select class="form-control" name="destination" id="destination" formControlName="destinations">
+                <option *ngFor="let size of sizes" [value]="size">Destination</option>
+              </select>
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="freight">Freight</label>
-              <select class="form-control" name="freight" id="freight">
-              <option *ngFor="let size of sizes" [value]="size">Freight</option>
-            </select>
+              <select class="form-control" name="freight" id="freight" formControlName="freight">
+                <option *ngFor="let size of sizes" [value]="size">Freight</option>
+              </select>
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="permissionNo">Permission No</label>
-              <input type="number" class="form-control" id="permissionNo">
+              <input type="number" class="form-control" id="permissionNo" formControlName="permissionNo">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="area">Area</label>
+              <select class="form-control" name="area" id="area" formControlName="area">
+                <option *ngFor="let size of sizes" [value]="size">Area</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="collary">Collary</label>
+              <select class="form-control" name="collary" id="collary" formControlName="collary">
+                <option *ngFor="let size of sizes" [value]="size">Collary</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="grade">Grade</label>
+              <select class="form-control" name="grade" id="grade" formControlName="grade">
+                <option *ngFor="let size of sizes" [value]="size">Grade</option>
+              </select>
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="by">By</label>
-              <select class="form-control" name="by" id="by">
-              <option *ngFor="let size of sizes" [value]="size">By</option>
-            </select>
+              <select class="form-control" name="by" id="by" formControlName="by">
+                <option *ngFor="let size of sizes" [value]="size">By</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="builtyCompany">Builty Company</label>
+              <input type="text" class="form-control" id="builtyCompany" formControlName="builtyCompany">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="transporter">Transporter</label>
+              <input type="text" class="form-control" id="transporter" formControlName="transporter">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="emd">EMD</label>
-              <input type="text" class="form-control" id="emd">
+              <input type="text" class="form-control" id="emd" formControlName="emd">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="doAmt">DO Amt</label>
-              <input type="text" class="form-control" id="doAmt">
+              <input type="text" class="form-control" id="doAmt" formControlName="doAmt">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="doAmtPMt">DO Amt P. MT</label>
-              <input type="text" class="form-control" id="doAmtPMt">
+              <input type="text" class="form-control" id="doAmtPMt" formControlName="doAmtpmt">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="doRate">DO Rate</label>
-              <input type="text" class="form-control" id="doRate">
+              <input type="text" class="form-control" id="doRate" formControlName="doRate">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="doRateTcs">DO Rate + TCS</label>
-              <input type="text" class="form-control" id="doRateTcs">
+              <input type="text" class="form-control" id="doRateTcs" formControlName="doRateTcs">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="withinOutSide">Within/out Side</label>
-              <select class="form-control" name="by" id="withinOutSide">
-              <option *ngFor="let size of sizes" [value]="size">Within/out Side</option>
-            </select>
+              <select class="form-control" name="by" id="withinOutSide" formControlName="withinOutSide">
+                <option *ngFor="let size of sizes" [value]="size">Within/out Side</option>
+              </select>
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="disp">Disp</label>
-              <input type="text" class="form-control" id="disp">
+              <input type="text" class="form-control" id="disp" formControlName="disp">
             </div>
           </div>
           <!-- Only when edit DO  - START-->
           <div class="col-md-3">
             <div class="form-group">
               <label for="liftedQuantity">Lifted Quantity</label>
-              <input type="number" class="form-control" id="liftedQuantity">
+              <input type="number" class="form-control" id="liftedQuantity" formControlName="liftedQuantity">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="quantityDeduction">Quantity Deduction</label>
-              <input type="number" class="form-control" id="quantityDeduction">
+              <input type="number" class="form-control" id="quantityDeduction" formControlName="quantityDeduction">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="lepseQuantity">Lepse Quantity</label>
-              <input type="number" class="form-control" id="lepseQuantity">
+              <input type="number" class="form-control" id="lepseQuantity" formControlName="lepseQuantity">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <label for="remarks">Remarks</label>
-              <input type="text" class="form-control" id="remarks">
+              <label for="doStatus">Do Status</label>
+              <input type="text" class="form-control" id="doStatus" formControlName="doStatus">
             </div>
           </div>
+
           <div class="col-md-3">
             <div class="form-group">
               <label for="refundAmt">Refund Amt</label>
-              <input type="text" class="form-control" id="refundAmt">
+              <input type="text" class="form-control" id="refundAmt" formControlName="refundAmt">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="refundDate">Refund Date</label>
-              <input type="date" class="form-control" id="refundDate">
+              <input type="date" class="form-control" id="refundDate" formControlName="refundDate">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label for="emdAmt">EMD Amt</label>
-              <input type="text" class="form-control" id="emdAmt">
+              <input type="text" class="form-control" id="emdAmt" formControlName="emdAmt">
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <label for="totalRefundEmd">Total Refund Amt</label>
-              <input type="text" class="form-control" id="totalRefundEmd">
+              <label for="totalRefundAmt">Total Refund Amt</label>
+              <input type="text" class="form-control" id="totalRefundAmt" formControlName="totalRefundAmt">
             </div>
           </div>
-          <!-- Only when edit DO  - END-->
           <div class="col-md-3">
             <div class="form-group">
-              <label for="transporter">Transporter</label>
-              <select class="form-control" name="transporter" id="transporter">
-              <option *ngFor="let size of sizes" [value]="size">Transporter</option>
-            </select>
+              <label for="finishDate">Finish Date</label>
+              <input type="date" class="form-control" id="finishDate" formControlName="finishDate">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="inAdvanceLimit">In Advance limit</label>
+              <input type="text" class="form-control" id="inAdvanceLimit" formControlName="inAdvanceLimit">
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
+              <label for="remarks">Remarks</label>
+              <input type="text" class="form-control" id="remarks" formControlName="remarks">
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="freightToBePaidBy">Freight to be paid</label>
+              <input type="text" class="form-control" id="freightToBePaidBy" formControlName="freightToBePaidBy">
+            </div>
+          </div>
+          <!-- Only when edit DO  - END-->
+          <div class="col-md-6">
+            <div class="form-group">
               <label for="website">Website</label>
-              <input type="text" class="form-control" id="website">
+              <input type="text" class="form-control" id="website" formControlName="website">
             </div>
           </div>
         </div>
 
         <!-- <button type="submit" class="btn btn-success">Create</button> -->
         <button type="submit" class="btn btn-primary">Create</button>
-
       </form>
     </div>
   </div>

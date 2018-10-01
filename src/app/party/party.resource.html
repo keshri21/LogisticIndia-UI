@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>Party Resource</strong>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form [formGroup]="loginForm">
+                <div class="row">
+                    <div class="col-md-3 col-md-push-5">
+                        <div class="form-group">
+                            <label for="userName" class="test">Party Name</label>
+                            <input type="text" class="form-control" id="userName" formControlName="partyname">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-md-push-5">
+                        <div class="form-group">
+                            <label for="destination">Destination</label>
+                            <input type="text" class="form-control" id="destination" formControlName="destination">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-md-push-5">
+                        <div class="form-group">
+                            <label for="freightrate">Freightrate</label>
+                            <select class="form-control" name="freightrate" id="freightrate" formControlName="freightrate">
+                                
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="submitLogin()">login</button>
+        </form>
+    </div>
+</div>
+</div>

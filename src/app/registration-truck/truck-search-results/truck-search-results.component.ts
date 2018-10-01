@@ -15,8 +15,6 @@ export class TruckSearchResultsComponent implements OnInit {
 
   constructor() { }
 
-  activeDoList
-
   ngOnInit() {
   }
 

@@ -11,11 +11,12 @@
             </thead>
             <tbody>
                 <tr *ngFor="let builtys of builtyList">
-                    <td>{{builtys.builtyNo}}</td>
-                    <td>{{builtys.receivedDate}}</td>
-                    <td>{{builtys.receivedQuantity}}</td>
+                    <td> <input type="number" name="tpNo" class="form-control" value="{{builtys.builtyNo}}" disabled></td>
+                    <td><input type="date" name="tpNo" class="form-control" value="{{builtys.receivedDate}}"></td>
+                    <td><input type="number" name="tpNo" class="form-control" value="{{builtys.receivedQuantity}}"></td>
                 </tr>
             </tbody>
         </table>
+        <button class="btn btn-primary">Update</button>
     </div>
 </div>
